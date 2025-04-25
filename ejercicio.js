@@ -12,6 +12,8 @@ let menores = 0;
 let tmujeres = 0;
 let thombres = 0;
 let running = true
+let edadHombres = 0;
+let edadMujeres = 0;
 while (running){
     alert(menu);
     let opcion = prompt('Ingrese el número la opción del menú que desee');
@@ -35,10 +37,12 @@ while (running){
                 alert(`${mensaje} obesidad`);
             } else{
                 alert(mensaje2)}
-            if (genero == '1'){
+            if (genero === '1'){
                 thombres +=1;
-            }else if (genero == '2'){
+                edadHombres += edad;
+            }else if (genero ==='2'){
                 tmujeres +=1;
+                edadMujeres += edad;
             }
             if (genero == '1' && imc >= 25){
                 hombres += 1;
@@ -56,7 +60,10 @@ while (running){
             alert(`Total de hombres registrados: ${thombres}\nTotal de mujeres registradas: ${tmujeres}`);
             break;
         case '3':
-            alert('promedio de edad de hombres y mujeres');
+            let promedioHombresEdades = thombres > 0 ? (edadHombres / thombres) : "N/A";
+            let promedioMujeresEdades = tmujeres > 0 ? (edadMujeres / tmujeres) : "N/A";
+            alert(`El promedio de edad de los hombres es: ${promedioHombresEdades}
+                  \nEl promedio de edad de las mujeres es: ${promedioMujeresEdades}`);
             break;
         case '4':
             alert(`El total de menores de edad registrados es de: ${menores}`);
@@ -66,13 +73,14 @@ while (running){
             break;
         case '6':
             let imcmenor = persona[0];
-                for (let i = 1; i < persona.length; i++);
-                    if(persona[i].imc < imcmenor.imc){
-                        imcmenor = persona[i];
-                    }
-                alert(`Paciente con imc más bajo: ${imcmenor.id}\n${imcmenor.nombre}\n${imcmenor.edad}\n${imcmenor.genero}\n${imcmenor.imc}`);
+                for(let i=1;i<persona.length;i++)
+                 if(persona[i].imc<imcmenor.imc){
+                    imcmenor=persona[i];
+                }
+            alert(`Paciente con imc más bajo:\nID: ${imcmenor.id}\nNombre: ${imcmenor.nombre}\nEdad: ${imcmenor.edad}\nGenero: ${imcmenor.genero}\nImc: ${imcmenor.imc}`);
+            break
         default:
             alert('opción no valida, adios')
-            break
+            
     }
 }
